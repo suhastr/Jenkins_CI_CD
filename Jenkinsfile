@@ -9,7 +9,8 @@ pipeline {
         DEPLOYMENT_YAML_PATH = 'deployment.yaml' // Path to your Kubernetes deployment file in the repo
         SERVICE_YAML_PATH = 'service.yaml' // Path to your Kubernetes service file in the repo
         DOCKER_REGISTRY_URL = 'https://index.docker.io/v1/' // Your Docker registry URL
-        DOCKER_CREDENTIALS_ID = 'dunkdock' // The ID of your Docker credentials in Jenkins
+        DOCKER_CREDENTIALS_ID = 'docker-login-pswd' // Make sure this matches the ID in Jenkins credentials
+}
     }
 
     stages {
