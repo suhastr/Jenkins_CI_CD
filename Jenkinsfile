@@ -32,8 +32,9 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                   withCredentials([string(credentialsId: 'docker-login-pswd', variable: 'docker-login-pswd')]) {
-                        docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker-login-pswd}") {
+                    
+                   withCredentials([string(credentialsId: 'docker-cred', variable: 'docker-cred')]) {
+                        docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker-cred}") {
                             docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                         }
                     }
