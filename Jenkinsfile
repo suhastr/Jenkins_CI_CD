@@ -5,7 +5,7 @@ pipeline {
         // Update these variables with your actual information
         DOCKER_USERNAME = 'dunkdock'
         DOCKER_IMAGE = 'dunkdock/user-form' // Replace with your Docker image name
-        DOCKER_TAG = 'latest_1.0' // Using the latest tag or you can use ${env.BUILD_ID} for unique tagging
+        DOCKER_TAG = 'latest_1.1' // Using the latest tag or you can use ${env.BUILD_ID} for unique tagging
         DOCKERFILE_PATH = 'Dockerfile' // Path to Dockerfile in your GitHub repository
         DEPLOYMENT_YAML_PATH = 'deployment.yaml' // Path to your Kubernetes deployment file in the repo
         SERVICE_YAML_PATH = 'service.yaml' // Path to your Kubernetes service file in the repo
