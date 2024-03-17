@@ -9,7 +9,8 @@ pipeline {
         DEPLOYMENT_YAML_PATH = 'deployment.yaml' // Path to your Kubernetes deployment file in the repo
         SERVICE_YAML_PATH = 'service.yaml' // Path to your Kubernetes service file in the repo
         DOCKER_REGISTRY_URL = 'https://index.docker.io/v1/' // Your Docker registry URL
-        DOCKER_CREDENTIALS_ID = 'docker-login-pswd'  // The ID of your Docker credentials in Jenkins
+        DOCKER_CREDENTIALS_ID = 'docker-login-pswd' // Make sure this matches the ID in Jenkins credentials
+
     }
 
     stages {
@@ -27,19 +28,19 @@ pipeline {
             }
         }
 
-       stage('Push Docker Image') {
-    steps {
-        script {
-            // Push Docker image to registry
-            withCredentials([string(credentialsId: DOCKER_CREDENTIALS_ID, variable: 'DOCKER_REG_TOKEN')]) {
-                docker.withRegistry(DOCKER_REGISTRY_URL, DOCKER_REG_TOKEN) {
-                    docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Push Docker image to registry
+                   withCredentials([string(credentialsId: 'docker-login-pswd', variable: 'docker-login-pswd')]) {
+                        docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker-login-pswd}") {
+                            docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
+                        }
+                    }
+
                 }
             }
         }
-    }
-}
-
 
         stage('Deploy to Kubernetes') {
             steps {
