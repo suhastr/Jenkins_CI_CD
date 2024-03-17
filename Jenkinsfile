@@ -33,8 +33,8 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     
-                   withCredentials([string(credentialsId: 'docker-cred', variable: 'docker-cred')]) {
-                        docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker-cred}") {
+                   withCredentials([string(credentialsId: 'docker_cred', variable: 'docker_cred')]) {
+                        docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker_cred}") {
                             docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                         }
                     }
