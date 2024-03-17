@@ -8,7 +8,7 @@ pipeline {
         DOCKERFILE_PATH = 'Dockerfile' // Path to Dockerfile in your GitHub repository
         DEPLOYMENT_YAML_PATH = 'deployment.yaml' // Path to your Kubernetes deployment file in the repo
         SERVICE_YAML_PATH = 'service.yaml' // Path to your Kubernetes service file in the repo
-        DOCKER_REGISTRY_URL = 'https://hub.docker.com/repository/docker/dunkdock/user-form/general' // Your Docker registry URL
+        DOCKER_REGISTRY_URL = 'https://index.docker.io/v1/' // Your Docker registry URL
         DOCKER_CREDENTIALS_ID = 'dunkdock' // The ID of your Docker credentials in Jenkins
     }
 
