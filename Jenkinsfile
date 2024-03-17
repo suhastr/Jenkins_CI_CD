@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                    withCredentials([string(credentialsId: 'docker-usr-pswd', variable: 'docker-usr-pswd')]) {
+                    withCredentials([string(credentialsId: 'dunkdock', variable: 'docker-usr-pswd')]) {
     // Your build and push code here, where you use DOCKER_REG_TOKEN as the secret
     docker.withRegistry("${DOCKER_REGISTRY_URL}", docker-usr-pswd) {
         docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
