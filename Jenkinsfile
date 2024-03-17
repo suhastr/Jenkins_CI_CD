@@ -31,11 +31,13 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                    withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        docker.withRegistry("${DOCKER_REGISTRY_URL}", 'DOCKER_USERNAME', 'DOCKER_PASSWORD') {
-                            docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
-                        }
-                    }
+                    withCredentials([string(credentialsId: 'docker-reg-token', variable: 'DOCKER_REG_TOKEN')]) {
+    // Your build and push code here, where you use DOCKER_REG_TOKEN as the secret
+    docker.withRegistry("${DOCKER_REGISTRY_URL}", DOCKER_REG_TOKEN) {
+        docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
+    }
+}
+
                 }
             }
         }
