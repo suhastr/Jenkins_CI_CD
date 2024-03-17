@@ -10,7 +10,7 @@ pipeline {
         DEPLOYMENT_YAML_PATH = 'deployment.yaml' // Path to your Kubernetes deployment file in the repo
         SERVICE_YAML_PATH = 'service.yaml' // Path to your Kubernetes service file in the repo
         DOCKER_REGISTRY_URL = 'https://hub.docker.com/repository/docker/dunkdock/user-form/general' // Your Docker registry URL
-        DOCKER_CREDENTIALS_ID = 'docker-login-pswd' // Make sure this matches the ID in Jenkins credentials
+        DOCKER_CREDENTIALS_ID = 'docker_cred' // Make sure this matches the ID in Jenkins credentials
 
     }
 
