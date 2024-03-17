@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                   withCredentials([string(credentialsId: 'dunkdock', variable: 'docker_usr_pswd')]) {
+                   withCredentials([string(credentialsId: 'docker_usr_pswd', variable: 'docker_usr_pswd')]) {
                         docker.withRegistry("${DOCKER_REGISTRY_URL}", "${env.docker_usr_pswd}") {
                             docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                         }
