@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: user-form
-        image: dunkdock/user-form:latest
+        image: dunkdock/user-form:latest_1.2
         ports:
         - containerPort: 80
