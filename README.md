@@ -45,6 +45,8 @@ This project demonstrates setting up a Kubernetes environment and deploying a CI
     ```bash
     sudo apt update
     sudo apt install -y docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
     sudo docker run -d --privileged --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
     sudo apt install -y openjdk-17-jdk openjdk-17-jre
     ```
